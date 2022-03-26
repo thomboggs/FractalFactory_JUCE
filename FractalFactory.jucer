@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="f9OVxx" name="FractalFactory" projectType="guiapp" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1"
-              cppLanguageStandard="20">
+              addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="jfk20h" name="FractalFactory">
     <GROUP id="{502BBEBF-A027-B7B5-EDA9-C875A26F5F0A}" name="Source">
       <FILE id="MAs5xR" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>

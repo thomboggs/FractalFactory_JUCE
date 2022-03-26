@@ -4,6 +4,9 @@
 MainComponent::MainComponent()
 {
     setSize (600, 400);
+    
+    addAndMakeVisible(&mandelBox);
+    addAndMakeVisible(&juliaBox);
 }
 
 MainComponent::~MainComponent()
@@ -13,12 +16,11 @@ MainComponent::~MainComponent()
 //==============================================================================
 void MainComponent::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
-
-    g.setFont (juce::Font (16.0f));
-    g.setColour (juce::Colours::white);
-    g.drawText ("Hello World!", getLocalBounds(), juce::Justification::centred, true);
+    auto bounds = getLocalBounds();
+    auto mandelBounds = bounds.removeFromLeft(bounds.getWidth() / 2);
+    
+    mandelBox.setBounds(mandelBounds.reduced(5, 5));
+    juliaBox.setBounds(bounds.reduced(5, 5));
 }
 
 void MainComponent::resized()
