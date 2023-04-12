@@ -10,10 +10,12 @@
 
 #include <JuceHeader.h>
 #include "JuliaBox.h"
+#include "FractalBox.h"
 #include <complex>
 
 //==============================================================================
-JuliaBox::JuliaBox() {}
+JuliaBox::JuliaBox() {
+}
 
 JuliaBox::~JuliaBox() {}
 
@@ -123,10 +125,21 @@ void JuliaBox::mouseDrag (const juce::MouseEvent& event) {
     juce::Point<int> point = event.getPosition();
     auto pointD = getMathCoord(point.getX(), point.getY());
     drawFractal(pointD);
+    m_fractalBox->setNewOrbit(pointD);
     repaint();
 }
 
 void JuliaBox::mouseUp (const juce::MouseEvent& event) {
     m_mouseIsPressed = false;
     repaint();
+}
+
+void JuliaBox::setNewFractal(const juce::Point<double> point) {
+    drawFractal(point);
+    m_fractalBox->setNewOrbit(point);
+    repaint();
+}
+
+void JuliaBox::setFractalBox(FractalBox& fractalBox) {
+    m_fractalBox = std::shared_ptr<FractalBox>(&fractalBox);
 }

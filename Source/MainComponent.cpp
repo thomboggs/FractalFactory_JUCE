@@ -7,6 +7,9 @@ MainComponent::MainComponent()
     
     addAndMakeVisible(&mandelBox);
     addAndMakeVisible(&juliaBox);
+    
+    mandelBox.setJuliaBox(juliaBox);
+    juliaBox.setFractalBox(mandelBox);
 }
 
 MainComponent::~MainComponent()

@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "FractalBox.h"
+#include "JuliaBox.h"
 #include <complex>
 
 //==============================================================================
@@ -174,6 +175,7 @@ std::vector<juce::Point<int>> FractalBox::calcOrbit(juce::Point<double> coordina
 void FractalBox::mouseDown (const juce::MouseEvent& event) {
     auto point = juce::Point<int>(event.getMouseDownPosition());
     m_orbitVec = calcOrbit(getMathCoord(point.getX(), point.getY()));
+    m_juliaBox->setNewFractal(getMathCoord(point.getX(), point.getY()));
     m_mouseIsPressed = true;
     repaint();
 }
@@ -182,10 +184,20 @@ void FractalBox::mouseDrag (const juce::MouseEvent& event) {
     juce::Point<int> point = event.getPosition();
     auto pointD = getMathCoord(point.getX(), point.getY());
     m_orbitVec = calcOrbit(pointD);
+    m_juliaBox->setNewFractal(pointD);
     repaint();
 }
 
 void FractalBox::mouseUp (const juce::MouseEvent& event) {
     m_mouseIsPressed = false;
     repaint();
+}
+
+void FractalBox::setNewOrbit(const juce::Point<double> orbitStart) {
+    m_orbitVec = calcOrbit(orbitStart);
+    repaint();
+}
+
+void FractalBox::setJuliaBox(JuliaBox &juliaBox) {
+    m_juliaBox = std::shared_ptr<JuliaBox>(&juliaBox);
 }

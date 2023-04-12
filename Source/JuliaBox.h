@@ -12,9 +12,9 @@
 
 #include <JuceHeader.h>
 
-//==============================================================================
-/*
-*/
+
+class FractalBox;
+
 class JuliaBox  : public juce::Component
 {
 public:
@@ -35,11 +35,15 @@ public:
     void mouseDrag (const juce::MouseEvent& event) override;
     void mouseUp (const juce::MouseEvent& event) override;
 
+    void setNewFractal(const juce::Point<double> point);
+    void setFractalBox(FractalBox& fractalBox);
+    
 private:
+    std::shared_ptr<FractalBox> m_fractalBox{nullptr};
     juce::Image m_image;
     
     uint m_minIterations {1};
-    uint m_maxIterations {30};
+    uint m_maxIterations {100};
     uint m_width{0}, m_height{0};
     
     double m_imageRatio {1.f};

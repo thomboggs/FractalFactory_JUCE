@@ -15,6 +15,8 @@
 //==============================================================================
 /*
 */
+class JuliaBox;
+
 class FractalBox : public juce::Component
 {
 public:
@@ -24,27 +26,30 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
     
-    void drawOrbit(juce::Graphics& g);
-    
-    int calcIterations(const int x, const int y);
-    bool hasSizeChanged(const int curWidth, const int curHeight);
-    void initImage();
-    juce::Point<double> getMathCoord(const int x, const int y);
-    juce::Point<int> getDispCoord(const double x, const double y);
-    std::vector<juce::Point<int>> calcOrbit(juce::Point<double> coordinate);
-    
     void mouseDown (const juce::MouseEvent& event) override;
     void mouseDrag (const juce::MouseEvent& event) override;
     void mouseUp (const juce::MouseEvent& event) override;
     
+    void setNewOrbit(const juce::Point<double> orbitStart);
+    void setJuliaBox(JuliaBox& juliaBox);
+    
 private:
+    void drawOrbit(juce::Graphics& g);
+    int calcIterations(const int x, const int y);
+    bool hasSizeChanged(const int curWidth, const int curHeight);
+    void initImage();
     void drawFractal();
+    juce::Point<double> getMathCoord(const int x, const int y);
+    juce::Point<int> getDispCoord(const double x, const double y);
+    std::vector<juce::Point<int>> calcOrbit(juce::Point<double> coordinate);
+    
+    std::shared_ptr<JuliaBox> m_juliaBox{nullptr};
     
     juce::Image m_image;
     
     uint m_minIterations {1};
-    uint m_maxIterations {30};
-    uint m_maxOrbitLen {100};
+    uint m_maxIterations {40};
+    uint m_maxOrbitLen {25};
     uint m_width{0}, m_height{0};
     
     double m_imageRatio {1.f};
