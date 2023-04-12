@@ -4,7 +4,11 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="jfk20h" name="FractalFactory">
     <GROUP id="{502BBEBF-A027-B7B5-EDA9-C875A26F5F0A}" name="Source">
+      <FILE id="frm4Dm" name="JuliaBox.cpp" compile="1" resource="0" file="Source/JuliaBox.cpp"/>
+      <FILE id="iO4MvH" name="JuliaBox.h" compile="0" resource="0" file="Source/JuliaBox.h"/>
       <FILE id="MAs5xR" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="x3Vq19" name="FractalBox.cpp" compile="1" resource="0" file="Source/FractalBox.cpp"/>
+      <FILE id="mXjxDn" name="FractalBox.h" compile="0" resource="0" file="Source/FractalBox.h"/>
       <FILE id="nTkGEk" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="VjM7oj" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
